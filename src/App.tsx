@@ -70,7 +70,6 @@ const App: Component = () => {
   })
 
   async function submitted() {
-    console.log(inputTodo())
     const { data, error } = await supabase.from<Todo>('todos').insert({
       task: inputTodo(),
       is_complete: false,
@@ -81,8 +80,22 @@ const App: Component = () => {
     setInputTodo('')
   }
 
+  async function completeTodo(id: number) {
+    const { error } = await supabase
+      .from<Todo>('todos')
+      .update({
+        is_complete: true
+      })
+      .eq('id', id)
+    if (error) {
+      console.error(error)
+    }
+    setInputTodo('')
+  }
+
   return (
     <div class="m-1">
+      <div>QuickList</div>
       <input
         class="border-4"
         type="text"
@@ -100,7 +113,16 @@ const App: Component = () => {
         }
       >
         <For each={todos}>
-          {(item) => <div class="text-black p-4 my-2">{item.task}</div>}
+          { (item) => 
+            <div class="flex items-center space-x-4">
+              <div class="text-black p-4 my-2">{item.task}</div>
+              {
+                item.is_complete ?
+                <div>@</div> :
+                <button onClick={() => completeTodo(item.id)}>O</button>
+              }
+            </div>
+          }
         </For>
       </ErrorBoundary>
     </div>
