@@ -1,25 +1,26 @@
 {
-  "name": "vite-template-solid",
-  "version": "0.0.0",
-  "description": "",
-  "scripts": {
-    "start": "vite",
-    "dev": "vite",
-    "build": "vite build",
-    "serve": "vite preview"
-  },
-  "license": "MIT",
-  "devDependencies": {
-    "typescript": "^4.6.4",
-    "vite": "^2.9.9",
-    "vite-plugin-solid": "^2.2.6"
-  },
-  "dependencies": {
-    "@supabase/supabase-js": "^1.35.3",
-    "autoprefixer": "^10.4.7",
-    "babel-preset-solid": "^1.4.4",
-    "postcss": "^8.4.14",
-    "solid-js": "^1.4.4",
-    "tailwindcss": "^3.1.2"
+    "name": "vite-template-solid",
+    "version": "0.0.0",
+    "description": "",
+    "scripts": {
+      "start": "vite",
+      "dev": "vite",
+      "build": "vite build",
+      "serve": "vite preview"
+    },
+    "license": "MIT",
+    "devDependencies": {
+      "typescript": "^4.6.4",
+      "vite": "^2.9.9",
+      "vite-plugin-solid": "^2.2.6"
+    },
+    "dependencies": {
+      "@supabase/supabase-js": "^1.35.3",
+      "autoprefixer": "^10.4.7",
+      "babel-preset-solid": "^1.4.4",
+      "postcss": "^8.4.14",
+      "solid-js": "^1.4.4",
+      "tailwindcss": "^3.1.2"
+    }
   }
-}
+  
