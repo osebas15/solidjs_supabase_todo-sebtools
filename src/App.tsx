@@ -47,9 +47,11 @@ const App: Component = () => {
   })
 
   onMount(() => {
+    console.log("b4 subscribe")
     subscription = supabase
       .from<Todo>('todos')
       .on('*', (payload) => {
+        console.log("after subscribe")
         switch (payload.eventType) {
           case 'INSERT':
             setTodos((prev) => [...prev, payload.new])
@@ -103,7 +105,6 @@ const App: Component = () => {
         value={inputTodo()}
         onInput={(e) => setInputTodo(e.target.value)}
       />
-      <div>QuickList</div>
       <button onClick={submitted}>Submit</button>
       <ErrorBoundary
         fallback={
