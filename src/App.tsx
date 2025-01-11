@@ -90,6 +90,7 @@ const App: Component = () => {
         value={inputTodo()}
         onInput={(e) => setInputTodo(e.target.value)}
       />
+      <div>QuickList</div>
       <button onClick={submitted}>Submit</button>
       <ErrorBoundary
         fallback={
