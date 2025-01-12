@@ -47,11 +47,16 @@ const App: Component = () => {
   })
 
   onMount(() => {
-    console.log("b4 subscribe")
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        submitted()
+      }
+    })
+
     subscription = supabase
       .from<Todo>('todos')
       .on('*', (payload) => {
-        console.log("after subscribe")
         switch (payload.eventType) {
           case 'INSERT':
             setTodos((prev) => [...prev, payload.new])
