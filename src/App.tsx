@@ -92,7 +92,16 @@ const App: Component = () => {
     if (error) {
       console.error(error)
     }
-    setInputTodo('')
+  }
+
+  async function deleteTodo(id: number) {
+    const { error } = await supabase
+      .from<Todo>('todos')
+      .delete()
+      .eq('id', id)
+    if (error) {
+      console.error(error)
+    }
   }
 
   return (
@@ -122,6 +131,7 @@ const App: Component = () => {
                 <div>@</div> :
                 <button onClick={() => completeTodo(item.id)}>O</button>
               }
+              <button onClick={() => deleteTodo(item.id)}>X</button>
             </div>
           }
         </For>
