@@ -21,9 +21,8 @@ type Todo = {
 
 const loadTodos = async () => {
   const { data, error } = await supabase.from<Todo>('todos').select()
-  console.log('async function body', data)
   if (error) {
-    console.log(error)
+    console.error(error)
     throw error
   }
 
@@ -127,7 +126,9 @@ const App: Component = () => {
           </div>
         }
       >
-        <For each={todos}>
+        <For each={todos.toSorted((a, b) => {
+          return a.task > b.task ? 1 : -1
+        })}>
           { (item) => 
             <div class="flex items-center space-x-4">
               <div class="text-black p-4 my-2">{item.task}</div>
